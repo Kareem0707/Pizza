@@ -109,6 +109,9 @@ export default function Hero() {
         }
       });
 
+      // Intro Text (Starts visible, leaves immediately on scroll)
+      tl.to(".text-intro", { opacity: 0, y: -50, duration: 0.05 }, 0);
+
       // Text 1: Station 1
       tl.to(".text-1", { opacity: 1, x: 0, duration: 0.05 }, 0.05)   // Enter
         .to(".text-1", { opacity: 1, x: 0, duration: 0.15 })         // Hold (images keep moving)
@@ -148,6 +151,18 @@ export default function Hero() {
       {/* Hero Content Container (gives scroll space for the intro texts) */}
       <div id="home" ref={containerRef} className="relative h-[400vh] w-full">
         <div className="sticky top-0 w-full h-screen overflow-hidden pointer-events-none flex items-center justify-center">
+          
+          {/* Intro Text: Starts fully visible, disappears on scroll */}
+          <div className="text-intro absolute text-center px-4 w-full flex flex-col items-center justify-center pointer-events-auto">
+            <h1 className="font-syne text-6xl md:text-8xl lg:text-9xl font-bold text-white tracking-tighter drop-shadow-2xl uppercase">
+              <span className="text-accent">Red</span> Pizza
+            </h1>
+            <div className="mt-8 flex flex-col items-center opacity-70 animate-bounce">
+              <span className="text-sm tracking-[0.3em] uppercase mb-2 font-syne">Swipe Down</span>
+              <div className="w-px h-12 bg-gradient-to-b from-white to-transparent" />
+            </div>
+          </div>
+
           <div className="text-1 opacity-0 -translate-x-32 absolute text-center px-4 w-full max-w-4xl">
             <h2 className="font-syne text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight drop-shadow-2xl">
               Crafted with <span className="text-accent italic">Obsession.</span>
