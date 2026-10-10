@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>Inferno | Award-Winning Artisan Pizza</title>
+        <title>Red Pizza | Award-Winning Artisan Pizza</title>
         <meta name="description" content="Modern, high-end pizza brand." />
       </head>
       <body className={`${inter.variable} ${syne.variable} font-sans`}>

@@ -41,7 +41,7 @@ export default function Header() {
       <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center">
         {/* Logo */}
         <a href="#home" className="text-2xl md:text-3xl font-bold font-syne tracking-tighter text-white">
-          INFERNO<span className="text-accent">.</span>
+          RED PIZZA<span className="text-accent">.</span>
         </a>
 
         {/* Desktop Nav */}

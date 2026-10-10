@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <h2 className="text-3xl font-bold font-syne tracking-tighter text-white mb-6">
-              INFERNO<span className="text-accent">.</span>
+              RED PIZZA<span className="text-accent">.</span>
             </h2>
             <p className="text-white/60 text-sm leading-relaxed mb-6">
               Crafting authentic fire-baked artisan pizzas since 1998. Obsession in every bite.
@@ -79,7 +79,7 @@ export default function Footer() {
         {/* Credit Bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center">
           <p className="text-white/40 text-xs">
-            © 2026 Inferno Pizza. All rights reserved.
+            © 2026 Red Pizza. All rights reserved.
           </p>
           <p className="text-white/60 text-sm">
             Designed By <a href="https://karimodesign.vercel.app/" target="_blank" rel="noopener noreferrer" className="font-semibold text-primary hover:text-accent transition-colors duration-300">KarimoDesign</a>
