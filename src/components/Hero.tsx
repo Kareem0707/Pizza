@@ -109,22 +109,22 @@ export default function Hero() {
         }
       });
 
-      // Text 1: From Left
-      tl.to(".text-1", { opacity: 1, x: 0, duration: 0.05 }, 0.05)
-        .to(".text-1", { opacity: 0, x: -100, duration: 0.05 }, 0.15);
+      // Text 1: Station 1
+      tl.to(".text-1", { opacity: 1, x: 0, duration: 0.05 }, 0.05)   // Enter
+        .to(".text-1", { opacity: 1, x: 0, duration: 0.15 })         // Hold (images keep moving)
+        .to(".text-1", { opacity: 0, x: -100, duration: 0.05 }, 0.25); // Exit
         
-      // BIG GAP (0.15 to 0.40)
-      // Text 2: From Right
-      tl.to(".text-2", { opacity: 1, x: 0, duration: 0.05 }, 0.40)
-        .to(".text-2", { opacity: 0, x: 100, duration: 0.05 }, 0.50);
+      // Text 2: Station 2
+      tl.to(".text-2", { opacity: 1, x: 0, duration: 0.05 }, 0.35)   // Enter
+        .to(".text-2", { opacity: 1, x: 0, duration: 0.15 })         // Hold
+        .to(".text-2", { opacity: 0, x: 100, duration: 0.05 }, 0.55);  // Exit
 
-      // BIG GAP (0.50 to 0.75)
-      // Text 3: From Left
-      tl.to(".text-3", { opacity: 1, x: 0, duration: 0.05 }, 0.75)
-        .to(".text-3", { opacity: 0, x: -100, duration: 0.05 }, 0.85);
+      // Text 3: Station 3
+      tl.to(".text-3", { opacity: 1, x: 0, duration: 0.05 }, 0.65)   // Enter
+        .to(".text-3", { opacity: 1, x: 0, duration: 0.15 })         // Hold
+        .to(".text-3", { opacity: 0, x: -100, duration: 0.05 }, 0.85); // Exit
 
-      // Gap
-      // CTA: From Right
+      // CTA: Final Station
       tl.to(".text-cta", { opacity: 1, x: 0, duration: 0.05 }, 0.95);
     };
 
