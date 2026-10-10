@@ -26,31 +26,29 @@ export default function Hero() {
     const images: HTMLImageElement[] = [];
 
     const loadImages = () => {
-      for (let i = 1; i <= TOTAL_FRAMES; i++) {
-        const img = new Image();
-        const paddedIndex = i.toString().padStart(3, "0");
-        img.src = `/images/frames/frame-${paddedIndex}.webp`;
-        
-        img.onload = () => {
-          loadedCount++;
-          setLoadedPercentage(Math.floor((loadedCount / TOTAL_FRAMES) * 100));
-          images[i - 1] = img;
-          if (loadedCount === TOTAL_FRAMES) {
-            setIsLoaded(true);
-            imagesRef.current = images;
-            renderFrame(0);
-          }
-        };
-        img.onerror = () => {
-          loadedCount++;
-          images[i - 1] = images[i - 2] || new Image();
-          if (loadedCount === TOTAL_FRAMES) {
-            setIsLoaded(true);
-            imagesRef.current = images;
-            renderFrame(0);
-          }
-        };
-      }
+      // 1. Load the FIRST image immediately
+      const firstImg = new Image();
+      firstImg.src = `/images/frames/frame-001.webp`;
+      
+      firstImg.onload = () => {
+        images[0] = firstImg;
+        imagesRef.current = images;
+        renderFrame(0); // Show it instantly
+
+        // 2. Load the remaining images in the background
+        for (let i = 2; i <= TOTAL_FRAMES; i++) {
+          const img = new Image();
+          const paddedIndex = i.toString().padStart(3, "0");
+          img.src = `/images/frames/frame-${paddedIndex}.webp`;
+          
+          img.onload = () => {
+            images[i - 1] = img;
+          };
+          img.onerror = () => {
+            images[i - 1] = images[i - 2] || new Image();
+          };
+        }
+      };
     };
 
     loadImages();
