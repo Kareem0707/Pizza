@@ -39,10 +39,6 @@ export default function Hero() {
             setIsLoaded(true);
             imagesRef.current = images;
             renderFrame(0);
-            setTimeout(() => {
-              initScrollTrigger();
-              ScrollTrigger.refresh();
-            }, 100);
           }
         };
         img.onerror = () => {
@@ -52,10 +48,6 @@ export default function Hero() {
             setIsLoaded(true);
             imagesRef.current = images;
             renderFrame(0);
-            setTimeout(() => {
-              initScrollTrigger();
-              ScrollTrigger.refresh();
-            }, 100);
           }
         };
       }
@@ -138,6 +130,8 @@ export default function Hero() {
       tl.to(".text-cta", { opacity: 1, x: 0, duration: 0.05 }, 0.95);
     };
 
+    initScrollTrigger();
+
     return () => {
       window.removeEventListener("resize", handleResize);
       ScrollTrigger.getAll().forEach(t => t.kill());
@@ -155,19 +149,6 @@ export default function Hero() {
 
       {/* Hero Content Container (gives scroll space for the intro texts) */}
       <div id="home" ref={containerRef} className="relative h-[400vh] w-full">
-        {!isLoaded && (
-          <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black text-white pointer-events-auto">
-            <div className="font-syne text-3xl font-bold tracking-widest mb-4">INFERNO</div>
-            <div className="w-48 h-1 bg-white/10 rounded-full overflow-hidden">
-              <div 
-                className="h-full bg-accent transition-all duration-300"
-                style={{ width: `${loadedPercentage}%` }}
-              />
-            </div>
-            <div className="mt-4 text-white/50 text-sm tracking-widest">{loadedPercentage}%</div>
-          </div>
-        )}
-
         <div className="sticky top-0 w-full h-screen overflow-hidden pointer-events-none flex items-center justify-center">
           <div className="text-1 opacity-0 -translate-x-32 absolute text-center px-4 w-full max-w-4xl">
             <h2 className="font-syne text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight drop-shadow-2xl">
