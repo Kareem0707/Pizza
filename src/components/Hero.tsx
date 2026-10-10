@@ -25,34 +25,39 @@ export default function Hero() {
     let loadedCount = 0;
     const images: HTMLImageElement[] = [];
 
-    const loadImages = async () => {
+    const loadImages = () => {
       for (let i = 1; i <= TOTAL_FRAMES; i++) {
         const img = new Image();
         const paddedIndex = i.toString().padStart(3, "0");
         img.src = `/images/frames/frame-${paddedIndex}.webp`;
         
-        await new Promise((resolve) => {
-          img.onload = () => {
-            loadedCount++;
-            setLoadedPercentage(Math.floor((loadedCount / TOTAL_FRAMES) * 100));
-            images.push(img);
-            if (loadedCount === TOTAL_FRAMES) {
-              setIsLoaded(true);
-              imagesRef.current = images;
-              renderFrame(0);
-              setTimeout(() => {
-                initScrollTrigger();
-                ScrollTrigger.refresh();
-              }, 100);
-            }
-            resolve(null);
-          };
-          img.onerror = () => {
-            loadedCount++;
-            images.push(images[images.length - 1] || new Image());
-            resolve(null);
-          };
-        });
+        img.onload = () => {
+          loadedCount++;
+          setLoadedPercentage(Math.floor((loadedCount / TOTAL_FRAMES) * 100));
+          images[i - 1] = img;
+          if (loadedCount === TOTAL_FRAMES) {
+            setIsLoaded(true);
+            imagesRef.current = images;
+            renderFrame(0);
+            setTimeout(() => {
+              initScrollTrigger();
+              ScrollTrigger.refresh();
+            }, 100);
+          }
+        };
+        img.onerror = () => {
+          loadedCount++;
+          images[i - 1] = images[i - 2] || new Image();
+          if (loadedCount === TOTAL_FRAMES) {
+            setIsLoaded(true);
+            imagesRef.current = images;
+            renderFrame(0);
+            setTimeout(() => {
+              initScrollTrigger();
+              ScrollTrigger.refresh();
+            }, 100);
+          }
+        };
       }
     };
 
