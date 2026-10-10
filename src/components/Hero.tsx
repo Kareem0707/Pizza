@@ -83,15 +83,15 @@ export default function Hero() {
     window.addEventListener("resize", handleResize);
 
     const initScrollTrigger = () => {
-      // Animate frames across the ENTIRE page scroll, looping 4 times
+      // Animate frames across the ENTIRE page scroll, looping 2 times for smoother motion
       gsap.to(currentFrameRef.current, {
-        frame: (TOTAL_FRAMES * 4) - 1,
+        frame: (TOTAL_FRAMES * 2) - 1,
         ease: "none",
         scrollTrigger: {
           trigger: document.documentElement,
           start: "top top",
           end: "bottom bottom",
-          scrub: 0.5,
+          scrub: 1.5, // High scrub value acts as momentum/smoothing on jumpy mobile scrolls
           onUpdate: () => {
             const actualFrame = Math.floor(currentFrameRef.current.frame) % TOTAL_FRAMES;
             renderFrame(actualFrame);
@@ -105,7 +105,7 @@ export default function Hero() {
           trigger: containerRef.current,
           start: "top top",
           end: "bottom bottom",
-          scrub: true,
+          scrub: 1.5,
         }
       });
 
