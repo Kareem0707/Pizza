@@ -30,7 +30,7 @@ export default function RootLayout({
         <meta name="description" content="Modern, high-end pizza brand." />
       </head>
       <body className={`${inter.variable} ${syne.variable} font-sans`}>
-        <ReactLenis root options={{ smoothTouch: true, touchMultiplier: 2, lerp: 0.1 }}>
+        <ReactLenis root options={{ syncTouch: true, touchMultiplier: 2, lerp: 0.1 }}>
           <CartProvider>
             <Header />
             {children}
